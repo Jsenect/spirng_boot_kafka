@@ -19,6 +19,7 @@ public class KafkaSimpleConsumer {
     private static final Logger logger = LoggerFactory.getLogger(KafkaSimpleConsumer.class);
 
     @KafkaListener(topics = "rvf-metric-event-1")
+    //这个是使用正则表达式来匹配topic 是以内部的开头的：@KafkaListener(topicPattern = "${app.kafka-topic.eventTopics}.*")
     public void consumer1(ConsumerRecord<String, Object> record) {
 
         Object value = record.value();
